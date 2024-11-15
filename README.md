@@ -7,7 +7,7 @@
  Name: Atul Kumar
  SAPID: 590010879
 
-                                                                                             ..........Conntent.........
+                                                                             ..........Conntent.........
 
              Project : Simple GUI Calculator (tkinter)
 
