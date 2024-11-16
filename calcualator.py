@@ -14,9 +14,6 @@ def calculate():
 def clear_entry():
     entry_var.set("")
 
-def on_enter_key(event):
-    calculate()
-
 # Create the main window
 root = tk.Tk()
 root.title("Calculator")
@@ -35,19 +32,20 @@ buttons = [
 ]
 
 for (text, row, col) in buttons:
-    btn = tk.Button(root, text=text, command=lambda value=text: on_button_click(value), font=("Arial", 14), bd=5)
+    btn = tk.Button(root, text=text, command=lambda value=text: on_button_click(value) if value != '=' else calculate(), font=("Arial", 14), bd=5)
     btn.grid(row=row, column=col, ipadx=10, ipady=10)
+
+
 
 # Special button for clearing the entry
 clear_button = tk.Button(root, text="C", command=clear_entry, font=("Arial", 14), bg="red", fg="white", bd=5)
-clear_button.grid(row=5, column=0, columnspan=3, ipadx=10, ipady=10)
+clear_button.grid(row=5, column=0, ipadx=10, ipady=10)
 
 # Special button for the backspace operation
 backspace_button = tk.Button(root, text="<-", command=lambda: entry_var.set(entry_var.get()[:-1]), font=("Arial", 14), bd=5)
-backspace_button.grid(row=5, column=3, ipadx=10, ipady=10)
+backspace_button.grid(row=5, column=1, ipadx=10, ipady=10)
 
-# Bind the Enter key to the calculate function
-root.bind('<Return>', on_enter_key)
+
 
 # Run the GUI
 root.mainloop()
